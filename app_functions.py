@@ -345,7 +345,7 @@ def plot_density_map(gdf):
 
     return fig_map
 
-
+@st.cache(suppress_st_warning=True, allow_output_mutation=True)
 def plot_commuting(cod_municipio):
     df = pd.read_csv('data/pop/arranjos populacionais/tab01.csv', sep=';', decimal=',', thousands='.')
     cod_arranjo = str(df[df['Código do município'] == cod_municipio]['CodArranjo'].values[0])
