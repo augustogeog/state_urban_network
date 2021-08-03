@@ -18,16 +18,36 @@ import pickle
 
 #region SIDEBAR
 df_territory = app.load_df_territory()
-uf = st.sidebar.selectbox(label='UF', options=df_territory.uf.unique())
-options = app.filter_municipalities_by_uf(uf=uf, df=df_territory)
-municipio = st.sidebar.selectbox(label='Município', options=options)
-cod_municipio = app.get_cod_municipio(df=df_territory, uf=uf, municipio=municipio)
+#uf = st.sidebar.selectbox(label='UF', options=df_territory.uf.unique())
+uf = 'BA'
+#options = app.filter_municipalities_by_uf(uf=uf, df=df_territory)
+dict_pop_cluster = {
+    'Salvador':2930709
+    ,'Brejões - Nova Itarana':2904308
+    ,'Cachoeira - Muritiba - Governador Mangabeira':2929008
+    ,'Conceição do Almeida - Sapeaçu':2929602
+    ,'Santa Maria da Vitória':2929057
+    ,'Ubaitaba - Aurelino Leal':2932200
+    ,'Vera Cruz - Itaparica':2933208
+}
+
+st.header(list(dict_pop_cluster.values()))
+
+pop_cluster = st.sidebar.selectbox(label='Arranjo Populacional', options=list(dict_pop_cluster.keys()))
+cod_municipio = dict_pop_cluster[pop_cluster]
+#cod_municipio = app.get_cod_municipio(df=df_territory, uf=uf, municipio=municipio)
 municipio_name = app.load_mun_name(cod_municipio=cod_municipio)
 #endregion SIDEBAR
 
+st.markdown(type(cod_municipio))
+
+
+
+
+
 #region HEADER
 st.markdown(f"<h1 style='text-align: right; color: black;'>Rede Urbana do Estado da Bahia</h1>", unsafe_allow_html=True)
-st.markdown(f'## {municipio}')
+st.markdown(f'## {pop_cluster}')
 #endregion HEADER
 
 #region COMMUTING DATA
