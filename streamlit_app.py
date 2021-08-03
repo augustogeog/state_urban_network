@@ -37,15 +37,10 @@ cod_municipio = dict_pop_cluster[pop_cluster]
 municipio_name = app.load_mun_name(cod_municipio=cod_municipio)
 #endregion SIDEBAR
 
-st.markdown(type(cod_municipio))
-
-
-
-
 
 #region HEADER
 st.markdown(f"<h1 style='text-align: right; color: black;'>Rede Urbana do Estado da Bahia</h1>", unsafe_allow_html=True)
-st.markdown(f'## {pop_cluster}')
+#st.markdown(f'## {pop_cluster}')
 #endregion HEADER
 
 #region COMMUTING DATA
@@ -55,7 +50,7 @@ if cod_municipio in df['Código do município'].unique():
 #    fig_arranjo = app.plot_arranjo(cod_municipio=cod_municipio)
 #    st.plotly_chart(fig_arranjo, use_container_width=True)
 
-    st.markdown(f"<p style='text-align: left; color: black; font-size:18px'><b>Mobilidade Pendular do Arranjo Populacional<b></p>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: left; color: black;'>Mobilidade Pendular do Arranjo Populacional de {pop_cluster}</h3>", unsafe_allow_html=True)
     kepler_map = app.plot_commuting(cod_municipio=cod_municipio)
     htm = kepler_map._repr_html_()
     components.html(htm, height=600)
