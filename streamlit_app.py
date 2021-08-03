@@ -31,8 +31,6 @@ dict_pop_cluster = {
     ,'Vera Cruz - Itaparica':2933208
 }
 
-st.header(list(dict_pop_cluster.values()))
-
 pop_cluster = st.sidebar.selectbox(label='Arranjo Populacional', options=list(dict_pop_cluster.keys()))
 cod_municipio = dict_pop_cluster[pop_cluster]
 #cod_municipio = app.get_cod_municipio(df=df_territory, uf=uf, municipio=municipio)
